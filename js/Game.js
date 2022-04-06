@@ -154,6 +154,7 @@ class Game {
 
           this.handleFuel(index);
           this.handlePowerCoins(index);
+          this.handleCollisionWithObstacle(index);
 
           // Changing camera position in y direction
           camera.position.y = cars[index - 1].position.y;
@@ -193,6 +194,12 @@ class Game {
       });
       window.location.reload();
     });
+  }
+  
+  handleCollisionWithObstacle(index){
+    if(cars[index-1].collide(obstacles)){
+      player.life = player.life - 185/4
+    }
   }
 
   showLife() {
